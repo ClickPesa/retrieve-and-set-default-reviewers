@@ -1,0 +1,19 @@
+name: 'Send slack notifications'
+description: ''
+author: 'Benedict'
+inputs:
+  GITHUB_TOKEN:
+    required: true
+    description: "authorization token to perform actions"
+  SLACK_AUTH_TOKEN:
+    required: false
+    description: "authentication token to fetch slack reporter username"
+  SLACK_API_URL:
+    required: false
+    description: "slack api url to fetch usernames"
+  REPORTER_SLACK_EMAIL:
+    required: true
+    description: "reporter slack email address"
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

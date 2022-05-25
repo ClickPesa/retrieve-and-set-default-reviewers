@@ -1,0 +1,28 @@
+name: 'build-test'
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          yarn
+      - run: |
+          yarn run all
+  test: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        id: reporter_id
+        with:
+          GITHUB_TOKEN: ${{secrets.TOKEN}}
+          REPORTER_SLACK_EMAIL: "bmsteve@yahoo.com"
+          SLACK_AUTH_TOKEN: ${{secrets.SLACK_AUTH_TOKEN}}
+          SLACK_API_URL: ${{secrets.SLACK_API_URL}}
+      - name: Get the reporter id
+        run: echo "The author was ${{ steps.reporter_id.outputs.reporter_id }}"
