@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v3.4.0
       - run: |
           yarn
       - run: |
@@ -16,7 +16,7 @@ jobs:
   test: 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v3.4.0
       - uses: ./
         id: reporter_id
         with:
